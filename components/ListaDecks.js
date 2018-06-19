@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem,  Text, Body,Badge } from 'native-base';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import {TouchableOpacity,Alert} from 'react-native'
+import { white } from 'ansi-colors';
 
 onPress = () => {
     
@@ -16,7 +17,7 @@ class ListaDecks extends Component {
       
           <List style={{backgroundColor:'white'}}>
           
-            <ListItem >
+            <ListItem>
             <MaterialCommunityIcons name='cards' size={40}/>
               <Body>
                 <Text>React</Text>

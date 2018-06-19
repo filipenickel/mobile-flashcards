@@ -11,8 +11,6 @@ import ListaDecks from './ListaDecks'
       <Tabs initialPage={0} >
         <Tab heading="Coleção de Cards" style={{backgroundColor:'grey'}}>
             <ListaDecks /> 
-            <ListaDecks />
-            <ListaDecks />
                        
         </Tab>
         
