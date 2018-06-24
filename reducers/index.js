@@ -1,41 +1,40 @@
 import { combineReducers } from "redux";
-import {SET_DECKS,CREATE_CARD,UPDATE_SCORE} from '../actions';
+import { SET_DECKS, CREATE_CARD, CREATE_DECK } from "../actions";
 
 function decks(state = {}, action) {
-    switch (action.type) {
-      case SET_DECKS:
-        return action.decks
-      case CREATE_CARD:
-        const newComment = {
-          question: action.question,
-          answer: action.answer,
-          cardId: action.cardId
+  switch (action.type) {
+    case SET_DECKS:
+      return action.decks
+
+    case CREATE_CARD:
+    return{
+        question: action.question,
+        answer: action.answer,
+        cardId: action.cardId
+      }
+
+      console.log("in de moment")
+      console.log(state[action.cardId].questions)
+
+      return {
+        ...state,
+        [action.question]: {
+          action: action.question
         }
-        console.log("in de moment")
-        console.log(state[action.cardId].questions)
-  
-        return {
-          ...state,
-          [action.deckId]: {
-            ...state[action.cardId],
-            comments: state[action.cardId].questions.push(newComment)
-          }
+      }
+    case CREATE_DECK:
+      return{
+        title: action.title,
+        deckId: action.deckId
+      }
+      
+      return {
+        ...state,
+        [action.title]: {
+          title: action.title
         }
+      }
+  }
+}
 
-        function updateScore(state = {}, action) {
-            switch (action.type) {
-              case UPDATE_SCORE:
-                return action.updateScore
-              default:
-                return state
-            }
-          }
-
-
-
-
-
-
-    
-        
-export default combineReducers({decks})
+export default combineReducers({ decks })

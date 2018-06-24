@@ -1,7 +1,6 @@
 export const SET_DECKS = "SET_DECKS"
 export const CREATE_DECK = "CREATE_DECK"
 export const CREATE_CARD = "CREATE_CARD"
-export const UPDATE_SCORE = "UPDATE_SCORE"
 
 
 export function setDecks(decks) {
@@ -26,12 +25,5 @@ export function createDeck(title,deckId){
         type:CREATE_DECK,
         title,
         deckId
-    }
-}
-
-export function updateScore(updateScore){
-    return{
-        type:UPDATE_SCORE,
-        updateScore
     }
 }
