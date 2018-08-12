@@ -25,7 +25,7 @@ export function setNotification() {
                     if (status === 'granted') {
                         Notifications.cancelAllScheduledNotificationsAsync().then(() => {
                             let today = new Date();
-                            today.setDate(today.getDate());
+                            today.setDate(today.getDate() + 1);
                             today.setHours(23, 0, 0);
 
                             const notification = buildNotification();
