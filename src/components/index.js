@@ -10,6 +10,8 @@ import DeckList from './deck/DeckList.js';
 import IndividualDeck from './deck/IndividualDeck.js';
 import NewQuestion from './question/NewQuestion';
 import Quiz from './quiz/Quiz.js'
+import {StatusBar} from 'react-native';
+import {Constants} from 'expo';
 
 const Tabs = TabNavigator({
         DeckList: {
@@ -30,8 +32,10 @@ const Tabs = TabNavigator({
 const AppNavigator = StackNavigator({
     Home: {
         screen: Tabs,
-        navigationOptions: {title: 'Home'},
-    },
+        navigationOptions: {
+          header: null
+        }
+      },
     IndividualDeck: {
         screen: IndividualDeck,
         navigationOptions: {
@@ -61,9 +65,16 @@ export default class Index extends React.Component {
 
     render() {
         return <Provider store={createStore(reducer)}>
-            <View style={{flex: 1}}>
-                <AppNavigator />
-            </View>
+            <View style={{ flex: 1 }}>
+        <View style={{ height: Constants.statusBarHeight }}>
+          <StatusBar
+            translucent
+            backgroundColor="#fff"
+            barStyle="light-content"
+          />
+        </View>
+        <AppNavigator />
+</View>
         </Provider>
     }
 }
