@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
+import {clearLocalNotification, setNotification} from '../../util/notificationAPI';
 
 export default class Quiz extends React.Component {
 
@@ -37,10 +38,15 @@ export default class Quiz extends React.Component {
         const {questions} = this.props.navigation.state.params;
         const isQuestionAvailable = questionIndex < questions.length;
         const questionLeft = questions.length - questionIndex;
-
+        
+        if( ! isQuestionAvailable  ) {
+            clearLocalNotification().then(setNotification);
+          
+           }
+        
         return (
             <View style={{flex: 1}}>
-                {isQuestionAvailable ? (
+                {isQuestionAvailable ?  (
                     <View style={styles.container}>
 
                         <View style={[styles.group, {justifyContent: 'flex-start', flex: 1}]}>
@@ -101,7 +107,10 @@ export default class Quiz extends React.Component {
 
                     </View>
 
-                ) : (
+                ) :
+                
+                (
+                    
                     <View style={styles.container}>
                         <Text>Score: {correctAnswers}</Text>
 
