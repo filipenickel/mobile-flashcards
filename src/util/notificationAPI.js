@@ -16,6 +16,11 @@ function buildNotification() {
     };
 }
 
+export function clearLocalNotification(){
+    return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
+}
+
 export function setNotification() {
     AsyncStorage.getItem(NOTIFICATION_KEY)
         .then(JSON.parse)
